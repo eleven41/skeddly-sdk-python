@@ -36,3 +36,29 @@ class ActionsMixin:
             queryString = "?" + "&".join(queryParameters)
 
         return self.invoke_get("Actions/" + actionId + queryString)
+
+    def create_action(self, actionType, name, isEnabled, schedule, parameters, postExecutionTriggers = None):
+        body = {
+            "actionType": actionType,
+            "name": name,
+            "isEnabled": isEnabled,
+            "schedule": schedule,
+            "parameters": parameters,
+            "postExecutionTriggers": postExecutionTriggers
+        }
+
+        return self.invoke_post("Actions/", body)
+
+    def modify_action(self, actionId, name, isEnabled, schedule, parameters, postExecutionTriggers = None):
+        body = {
+            "name": name,
+            "isEnabled": isEnabled,
+            "schedule": schedule,
+            "parameters": parameters,
+            "postExecutionTriggers": postExecutionTriggers
+        }
+
+        return self.invoke_put("Actions/" + actionId, body)
+
+    def delete_action(self, actionId):
+        return self.invoke_delete("Actions/" + actionId)

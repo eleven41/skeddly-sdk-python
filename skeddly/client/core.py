@@ -10,6 +10,7 @@ class Client(
     actions.ActionsMixin,
     credentials.CredentialsMixin,
     ):
+
     def __init__(self, accessKey = None):
         self.endpoint = "https://api.skeddly.com/api/"
 
@@ -20,6 +21,7 @@ class Client(
             accessKey = d["accessKey"]
 
         self.accessKey = accessKey
+        self.is_log = False
 
     def throw_exception(self, response):
         message = None
@@ -45,14 +47,59 @@ class Client(
         }
         return headers
 
-    def invoke_get(self, action):
-        #print("Invoking: " + action)
+    def get_endpoint(self, action):
+        return self.endpoint + action
 
-        url = self.endpoint + action
+    def invoke_get(self, action):
+        if (self.is_log):
+            print("Invoking GET " + action)
+
+        url = self.get_endpoint(action)
         headers = self.get_headers()
 
         response = requests.get(url, headers = headers)
         if (response.status_code == 200):
             return response.json()
+        
+        self.throw_exception(response)
+
+    def invoke_post(self, action, body):
+        if (self.is_log):
+            print("Invoking POST " + action)
+
+        url = self.get_endpoint(action)
+        headers = self.get_headers()
+
+        response = requests.post(url, json=body, headers = headers)
+        if (response.status_code == 200):
+            return response.json()
+        
+        self.throw_exception(response)
+
+    def invoke_put(self, action, body):
+        if (self.is_log):
+            print("Invoking PUT " + action)
+
+        url = self.get_endpoint(action)
+        headers = self.get_headers()
+
+        response = requests.put(url, json=body, headers = headers)
+        if (response.status_code == 200):
+            return response.json()
+        
+        self.throw_exception(response)
+
+    def invoke_delete(self, action):
+        if (self.is_log):
+            print("Invoking DELETE " + action)
+
+        url = self.get_endpoint(action)
+        headers = self.get_headers()
+
+        response = requests.delete(url, headers = headers)
+        if (response.status_code == 200):
+            return response.json()
+        elif (response.status_code == 204):
+            return None
         
         self.throw_exception(response)

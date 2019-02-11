@@ -13,13 +13,6 @@
             "console": "integratedTerminal"
         },
         {
-            "name": "Python: sample_main.py",
-            "type": "python",
-            "request": "launch",
-            "program": "${workspaceFolder}/sample_main.py",
-            "console": "integratedTerminal"
-        },
-        {
             "name": "Python: Remote Attach",
             "type": "python",
             "request": "attach",
