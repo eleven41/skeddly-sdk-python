@@ -1,0 +1,15 @@
+# Visual Studio Code files
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# Python compiled files
+*.pyc
+
+# Python Packaging
+build/
+__pycache__/
+dist/
+*.egg-info/
