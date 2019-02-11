@@ -2,16 +2,18 @@
 
 The official Skeddly SDK for Python.
 
+[![Build status](https://ci.appveyor.com/api/projects/status/d7a4cmmx415u932o?svg=true)](https://ci.appveyor.com/project/eleven41/skeddly-sdk-python)
+
 ## Requirements
 
 * Python 3.6 or later
 
 ## Installation
 
-*Coming soon*
+Install the SDK using `pip`.
 
 ```
-pip3 install skeddly-sdk
+pip install skeddly-sdk
 ```
 
 ## Usage
