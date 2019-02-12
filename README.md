@@ -56,6 +56,19 @@ If you want to set the Skeddly access key via code rather than in the `~/skeddly
 client = skeddly.Client(accessKey="sk_12345678901234567890123456789012")
 ```
 
+### Data Formats
+
+#### Responses
+
+Unless otherwise mentioned, responses are `dict`.
+
+```python
+actions = client.list_actions()
+for action in actions:
+    print("Action ID: " + action["actionId"])
+    print("Action Name: " + action["name"])
+```
+
 ## Additional Resources
 
 * [Skeddly API Documentation](https://docs.skeddly.com/)

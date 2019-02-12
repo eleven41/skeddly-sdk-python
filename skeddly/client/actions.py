@@ -62,3 +62,6 @@ class ActionsMixin:
 
     def delete_action(self, actionId):
         return self.invoke_delete("Actions/" + actionId)
+
+    def execute_action(self, actionId):
+        return self.invoke_put("Actions/" + actionId + "/Execute")

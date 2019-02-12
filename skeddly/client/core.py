@@ -76,7 +76,7 @@ class Client(
         
         self.throw_exception(response)
 
-    def invoke_put(self, action, body):
+    def invoke_put(self, action, body = None):
         if (self.is_log):
             print("Invoking PUT " + action)
 
